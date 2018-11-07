@@ -1,0 +1,38 @@
+<div class="container">
+  <h2><%= @restaurant.name %></h2>
+  <p>Address:
+    <%= @restaurant.address %>
+  </p>
+  <p>Category:
+    <%= @restaurant.category.capitalize %>
+  </p>
+  <p>Number:
+    <%= @restaurant.phone_number %>
+  </p>
+  <ul class="list-inline">
+    <li>
+      <%= link_to(edit_restaurant_path) do %>
+      <i class="far fa-edit"></i>
+      Edit
+      <% end %>
+    </li>
+    <li>
+      <%= link_to(restaurants_path) do %>
+      <i class="fas fa-undo"></i>
+      Back to List
+      <% end %>
+    </li>
+  </ul>
+  <br>
+  <h4>What People Think</h4>
+  <% @restaurant.reviews.each do |review| %>
+  <%= review.content %>
+  <p>Rating:
+    <%= review.rating %>
+  </p>
+  <% end %>
+  <%= link_to(new_restaurant_review_path(@restaurant)) do %>
+      <i class="fas fa-plus"></i>
+      Add A New Review
+      <% end %>
+</div>
